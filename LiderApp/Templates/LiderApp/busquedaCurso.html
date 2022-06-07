@@ -1,0 +1,18 @@
+{% extends "LiderApp/padre.html" %}
+{% load static %}
+
+{% block titulo %}
+<h1>Busca los cursos más populares de LiderApp</h1>
+{% endblock %}
+
+{% block contenido %}
+<h3>Ingrese el curso que busca</h3>
+<br>
+
+<form action="{% url 'buscar' %}" method="GET">
+    <input type="string" name="solicitud" placeholder="SOLICITUD" id="solicitud>
+    <br>
+    <input type="submit" name="Buscar">
+
+</form>
+{% endblock %}

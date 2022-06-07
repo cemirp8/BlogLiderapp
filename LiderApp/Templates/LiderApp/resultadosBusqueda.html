@@ -1,0 +1,15 @@
+{% extends "LiderApp/padre.html" %}
+{% load static %}
+
+{% block titulo %}
+<h1>Estos son los cursos solicitados {{solicitud}}</h1>
+{% if contacto %}
+<ul>
+    {% for solicitud in contacto %}
+    <li>{{contacto.nombre}}</li>
+    <li>{{contacto.solicitud}}</li>
+    <br>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

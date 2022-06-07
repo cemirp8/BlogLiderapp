@@ -1,0 +1,18 @@
+{% extends "LiderApp/padre.html" %}
+{% load static %}
+
+{% block titulo %}
+<h1>¿TIENES ALGUNA DUDA?</h1>
+{% endblock %}
+
+{% block contenido %}
+<h3>Si deseas que nos comuniquemos contigo, diligencia el siguiente formulario y con gusto te contactaremos!</h3>
+<br>
+<form style="margin:auto; width: 300px;" action="{% url 'contacto' %}" method="POST">{% csrf_token %}
+    <table>
+        {{contactoFormulario.as_table}}
+    </table>
+    <br>
+    <input style="margin:auto; width: 220px; background-color: pink;" type="submit" value="Enviar">
+    </form>
+{% endblock %}

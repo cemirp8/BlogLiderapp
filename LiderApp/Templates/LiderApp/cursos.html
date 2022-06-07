@@ -1,0 +1,27 @@
+{% extends "LiderApp/padre.html" %}
+{% load static %}
+
+{% block titulo %}
+<h1>PARTICIPA EN NUESTROS CURSOS</h1>
+{% endblock %}
+
+{% block contenido %}
+<h3>Diligencia el siguiente formulario y participa en nuestros talleres, cursos y webinars para mejorar tus habilidades como lider</h3>
+<br>
+<form style="margin:auto; width: 300px;" action="{% url 'cursos' %}" method="POST">{% csrf_token %}
+    <table>
+        {{cursoFormulario.as_table}}
+    </table>
+    <br>
+    <input style="margin:auto; width: 220px; background-color: pink;" type="submit" value="Enviar">
+    <br>
+    <br>
+    <div>
+        <p>
+            Para confirmar tu inscripción haz 
+            <a href="#">clic aquí</a>
+            .
+        </p>
+    </div>
+</form>
+{% endblock %}

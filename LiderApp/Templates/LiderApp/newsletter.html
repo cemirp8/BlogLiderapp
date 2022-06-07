@@ -1,0 +1,27 @@
+{% extends "LiderApp/padre.html" %}
+{% load static %}
+
+{% block titulo %}
+<h1>ÚNETE A NUESTRA COMUNIDAD</h1>
+{% endblock %}
+
+{% block contenido %}
+<h3>Diligencia tus datos para suscribirte a nuestro newsletter donde recibirás notificaciones con todo el contenido de tu interés</h3>
+<br>
+<form style="margin:auto; width: 300px;" action="{% url 'newsletter' %}" method="POST">{% csrf_token %}
+    <table>
+        {{miFormulario.as_table}}
+    </table>
+    <br>
+    <input style="margin:auto; width: 220px; background-color: pink;" type="submit" value="Enviar">
+    <br>
+    <br>
+    <div>
+        <p>
+            Para buscar otros líderes como tú haz 
+            <a href="#">clic aquí</a>
+            .
+        </p>
+    </div>
+</form>
+{% endblock %}
