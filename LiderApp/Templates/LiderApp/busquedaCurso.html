@@ -9,8 +9,9 @@
 <h3>Ingrese el curso que busca</h3>
 <br>
 
-<form action="{% url 'buscar' %}" method="GET">
-    <input type="string" name="solicitud" placeholder="SOLICITUD" id="solicitud">
+<form action="{% url 'resultadoCurso' %}" method="GET">
+    <input type="string" name="curso" placeholder="CURSO" id="curso">
+    <br>
     <br>
     <input type="submit" name="Buscar">
 

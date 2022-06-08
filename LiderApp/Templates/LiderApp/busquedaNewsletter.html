@@ -1,0 +1,19 @@
+{% extends "LiderApp/padre.html" %}
+{% load static %}
+
+{% block titulo %}
+<h1>Busca a otros líderes en tu país!</h1>
+{% endblock %}
+
+{% block contenido %}
+<h3>Ingresa el país que deseas buscar</h3>
+<br>
+
+<form action="{% url 'resultadoNewsletter' %}" method="GET">
+    <input type="string" name="pais" placeholder="PAIS" id="pais">
+    <br>
+    <br>
+    <input type="submit" name="Buscar">
+
+</form>
+{% endblock %}

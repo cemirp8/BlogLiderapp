@@ -2,14 +2,41 @@
 {% load static %}
 
 {% block titulo %}
-<h1>Estos son los cursos solicitados {{solicitud}}</h1>
-{% if contacto %}
+<h1>Informacion solicitada para: {{curso}}</h1>
+{% if cursos %}
+<br>
 <ul>
-    {% for solicitud in contacto %}
-    <li>{{contacto.nombre}}</li>
-    <li>{{contacto.solicitud}}</li>
-    <br>
-    {% endfor %}
+    <table style="margin:auto; width: 900px;" class="table table-dark table-striped">
+        <thead >
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Email</th>
+                <th scope="col">Curso</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            {% for curso in cursos %}
+            <tr class="table-active">
+            </tr>
+            <th scope="row">{{curso.nombre}}</th>
+            <th scope="row">{{curso.apellido}}</th>
+            <th scope="row">{{curso.email}}</th>
+            <th scope="row">{{curso.curso_de_interes}}</th>
+            </tr>
+            {% endfor %}
+    </tbody>
+    </table>
+    <br>    
+    
 </ul>
+{% else %}
+
+<p>No se encontraron coincidencias para tu búsqueda</p>
+<p>Vuelve a intentar dando click
+    <a style="color: pink" href="{% url 'busquedaCurso' %}">AQUI</a>
+</p>
+
 {% endif %}
 {% endblock %}

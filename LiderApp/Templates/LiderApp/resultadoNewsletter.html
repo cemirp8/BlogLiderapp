@@ -1,0 +1,44 @@
+{% extends "LiderApp/padre.html" %}
+{% load static %}
+
+{% block titulo %}
+<h1>Informacion solicitada para: {{pais}}</h1>
+{% if pais %}
+<br>
+<ul>
+    <table style="margin:auto; width: 900px;" class="table table-dark table-striped">
+        <thead >
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Email</th>
+                <th scope="col">Profesión</th>
+                <th scope="col">País</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            {% for pais in paises %}
+            <tr class="table-active">
+            </tr>
+            <th scope="row">{{pais.nombre}}</th>
+            <th scope="row">{{pais.apellido}}</th>
+            <th scope="row">{{pais.email}}</th>
+            <th scope="row">{{pais.profesion}}</th>
+            <th scope="row">{{pais.pais}}</th>
+            </tr>
+            {% endfor %}
+    </tbody>
+    </table>
+    <br>    
+    
+</ul>
+{% else %}
+
+<p>No se encontraron coincidencias para tu búsqueda</p>
+<p>Vuelve a intentar dando click
+    <a style="color: pink" href="{% url 'busquedaNewsletter' %}">AQUI</a>
+</p>
+
+{% endif %}
+{% endblock %}

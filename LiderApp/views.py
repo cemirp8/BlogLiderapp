@@ -22,13 +22,26 @@ def newsletter(request):
             apellido= request.POST['apellido']
             email= request.POST['email']
             profesion= request.POST['profesion']
-            newsletter= Newsletter(nombre=nombre, apellido=apellido, email=email, profesion=profesion)
+            pais= request.POST['pais']
+            newsletter= Newsletter(nombre=nombre, apellido=apellido, email=email, profesion=profesion, pais=pais)
             newsletter.save()
             return render(request, "LiderApp/inicio.html")
     else:
         miFormulario = NewsletterFormulario()
     return render(request, 'LiderApp/newsletter.html', {'miFormulario':miFormulario})
 
+def busquedaNewsletter(request):
+    return render(request, 'LiderApp/busquedaNewsletter.html')
+
+def resultadoNewsletter(request):
+    if request.GET['pais']:
+        pais = request.GET['pais']
+        paises = Newsletter.objects.filter(pais__icontains=pais)
+        return render(request, "LiderApp/resultadoNewsletter.html", {"paises":paises, "pais":pais})
+    else:
+        respuesta = "No enviaste datos"
+    return render(request, "LiderApp/resultadoNewsletter.html", {"respuesta":respuesta})   
+    
 def cursos(request):
     if request.method == "POST":
         cursoFormulario= CursosFormulario(request.POST)
@@ -67,6 +80,12 @@ def contacto(request):
 def busquedaCurso(request):
     return render(request, "LiderApp/busquedaCurso.html")
 
-def buscar(request):
-    respuesta = f"Estoy buscando solicitudes del curso de {request.GET['solicitud']}"
-    return HttpResponse(respuesta)
+def resultadoCurso(request):
+
+    if request.GET['curso']:
+        curso = request.GET['curso']
+        cursos = Cursos.objects.filter(curso_de_interes__icontains=curso)
+        return render(request, "LiderApp/resultadosBusqueda.html", {"cursos":cursos, "curso":curso})
+    else:
+        respuesta = "No enviaste datos"
+    return render(request, "LiderApp/resultadosBusqueda.html", {"respuesta":respuesta})

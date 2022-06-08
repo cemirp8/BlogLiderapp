@@ -6,6 +6,7 @@ class Newsletter(models.Model):
     apellido=models.CharField(max_length=30)
     email=models.EmailField()
     profesion=models.CharField(max_length=30)
+    pais=models.CharField(max_length=50)
 
     def __str__(self) -> str:
         return self.nombre+" "+str(self.profesion)
